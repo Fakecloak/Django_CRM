@@ -1,0 +1,18 @@
+{% extends 'FakeCRM/main/main.html' %}
+
+{% block title %}Register | FakeCRM{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+    <h1>Register</h1>
+        <br/>
+            <form method="POST" action="">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}               
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>   
+       
+</div>
+
+{% endblock content %}

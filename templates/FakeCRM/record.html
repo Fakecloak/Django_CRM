@@ -1,0 +1,52 @@
+{% extends 'FakeCRM/main/main.html' %}
+
+{% block title %}FakeCRM{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+<div class="card">
+    <div class="card-header"><strong>
+          {{ record_view.first_name }} 
+          {{ record_view.last_name }}</strong>
+    </div>
+    <div class="card-body">
+  
+
+  <p class="card-text">
+  <strong>ID: </strong>{{ record_view.id }}</p>
+
+  <p class="card-text">
+  <strong>Address: </strong>{{ record_view.address }}</p>
+  
+  <p class="card-text">
+  <strong>City: </strong>{{ record_view.city }}</p>
+  
+  <p class="card-text">
+  <strong>State: </strong>{{ record_view.state }}</p>
+  
+  <p class="card-text">
+  <strong>Zipcode: </strong>{{ record_view.zipcode }}</p>
+  
+  <p class="card-text">
+  <strong>Create At: </strong>{{ record_view.created_at }}</p>
+  
+
+      
+      
+    </div>
+  </div>
+  
+  <br/><br/>
+  <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+  
+  <a href="{% url 'delete_record' record_view.id %}" class="btn btn-danger">Delete</a>
+  
+  <a href="{% url 'update_record' record_view.id %}" class="btn btn-primary">Update Record</a>
+
+</div>
+
+
+
+
+{% endblock content %}
