@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,16 +77,11 @@ WSGI_APPLICATION = 'FakeProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Fake',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
+    "default": dj_database_url.parse("postgres://testdb_1smg_user:Gwf0Ny7jS4s4Wu7R5ZEr52F8TnVagyCW@dpg-ck0uq29fp0sc73btdcp0-a.singapore-postgres.render.com/testdb_1smg")
+
 }
 
+#DATABASES['default'] = dj_database_url.parse("postgres://testdb_1smg_user:Gwf0Ny7jS4s4Wu7R5ZEr52F8TnVagyCW@dpg-ck0uq29fp0sc73btdcp0-a.singapore-postgres.render.com/testdb_1smg")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
