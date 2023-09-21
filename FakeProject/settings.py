@@ -12,19 +12,27 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import dj_database_url
 from pathlib import Path
 import os
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
+
+"""
+import environ
+env = environ.Env()
+
+environ.Env.read_env()
+"""
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=uupofpg)*xc-@m2714uhkkqxm8)4e^gg%!mp9q74(e2%)^b$&'
+SECRET_KEY = config("SECRET_KEY") #str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default = True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -77,11 +85,10 @@ WSGI_APPLICATION = 'FakeProject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.parse("postgres://testdb_1smg_user:Gwf0Ny7jS4s4Wu7R5ZEr52F8TnVagyCW@dpg-ck0uq29fp0sc73btdcp0-a.singapore-postgres.render.com/testdb_1smg")
+    "default": dj_database_url.parse(config('DATABASE_URL'))
 
 }
 
-#DATABASES['default'] = dj_database_url.parse("postgres://testdb_1smg_user:Gwf0Ny7jS4s4Wu7R5ZEr52F8TnVagyCW@dpg-ck0uq29fp0sc73btdcp0-a.singapore-postgres.render.com/testdb_1smg")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
